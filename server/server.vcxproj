@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <ItemGroup>
     <ClInclude Include="DynamicLocalStreamAtObject.h" />
     <ClInclude Include="DynamicLocalStreamAtPlayer.h" />
@@ -86,6 +87,8 @@
   </ItemGroup>
 =======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{658FA649-71EA-4E35-BDF6-71AD941F8761}</ProjectGuid>
@@ -124,8 +127,11 @@
       <AdditionalIncludeDirectories>sdk</AdditionalIncludeDirectories>
       <DebugInformationFormat>None</DebugInformationFormat>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <PreprocessorDefinitions>_WINDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
 =======
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <StructMemberAlignment>1Byte</StructMemberAlignment>
       <PreprocessorDefinitions>_WINDLL;_WINSOCK_DEPRECATED_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -135,6 +141,9 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FloatingPointModel>Fast</FloatingPointModel>
       <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+<<<<<<< HEAD
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />

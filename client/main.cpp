@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
     This is a SampVoice project file
     Developer: CyberMor <cyber.mor.2020@gmail.ru>
@@ -124,6 +125,91 @@ BOOL APIENTRY DllMain(const HMODULE module, const DWORD reason, const LPVOID)
 			}
 		}
 
+=======
+﻿#include <thread>
+#include <atomic>
+#include <forward_list>
+
+#include "resource.h"
+
+#include "sv_header.h"
+#include "sv_addresses.h"
+#include "sv_render.h"
+#include "sv_samp.h"
+#include "sv_net.h"
+#include "sv_audio.h"
+
+#define SV_POST_TIMER_INTERVAL			25
+#define SV_MAIN_THREAD_SLEEP_INTERVAL	10
+
+namespace core {
+
+	static volatile bool afk_status = false;		// Статус афк
+	static volatile bool post_status = false;		// Статус пост-таймера
+	static volatile bool plugin_status = false;		// Статус загрузки плагина
+	static volatile bool change_status = false;		// Статус редактирования положения иконки
+	static volatile bool record_busy = false;		// Занято ли устройство записи сервером
+	static volatile bool record_status = false;		// Статус устройства записи (отключено/включено)
+	static volatile uint8_t active_key_id = NULL;	// Текущая клавиша активации (0 - нет клавиши)
+	static render::texture *icon_micro = nullptr;	// Текстура иконки микрофона
+	static uint8_t *packet_voice;					// Голосовой пакет для отправки
+	static uint8_t *packet_voice_data;				// Содержимое голосового пакета для отправки
+	static uint16_t *ptr_volume_level;				// Указатель на уровень громкости пакета
+	static UINT_PTR timer_post;						// Идентификатор пост-таймера
+
+	// Обработчики команд
+	namespace commands {
+
+		// Показать справку по командам
+		static void help(
+			char *args
+		) {
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : command list:");
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : /" SV_COMMAND_HELP " - show this help");
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : /" SV_COMMAND_CHANGE " - change icon position");
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : /" SV_COMMAND_REJECT " - reject status on/off");
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : /" SV_COMMAND_STORE " - change store size (in MB)");
+			samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : /" SV_COMMAND_DEBUG " - debug status on/off");
+		}
+
+		/// [dependency]
+		// Изменить позицию иконки
+		static void change(
+			char *args
+		) {
+			static std::thread *change_icon_pos_thread = nullptr;
+			change_icon_pos_thread = new std::thread([]() {
+				while (samp::pInput->iInputEnabled) Sleep(10);
+				samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : click to apply changes...");
+				samp::toggle_samp_cursor(true);
+				change_status = true;
+			});
+		}
+
+		// Запретить серверу контроллировать микрофон
+		static void reject(
+			char *args
+		) {
+			if (settings::get_settings()->reject_status = !settings::get_settings()->reject_status) {
+				samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : reject{" SV_COLOR_STR_SUCCESS "} enable");
+				if (audio::record::record_is_active()) audio::record::record_stop();
+			} else samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : reject{" SV_COLOR_STR_ERROR "} disable");
+		}
+
+		// Изменить размер хранилища
+		static void store(
+			char *args
+		) {
+			uint32_t new_size;
+			if (sscanf(args, "%u", &new_size)) {
+				new_size *= 1048576u;	// Перевод мегабайтов в байты
+				settings::get_settings()->store_limit = new_size;
+				audio::playback::sounds::store::set_limit(new_size);
+				samp::add_message_to_chat(SV_COLOR_INFO, "[sampvoice] : storage size set to %u bytes", new_size);
+			}
+		}
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 		// Включить режим отладки
 		static void debug(
 			char *args
@@ -492,6 +578,7 @@ BOOL APIENTRY DllMain(const HMODULE module, const DWORD reason, const LPVOID)
 		CreateThread(0, 0, main_thread, 0, 0, 0);
 
 	}
+<<<<<<< HEAD
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
 
     return CreateThread(NULL, 0, LibraryWaitingThread, NULL, NULL, NULL)
@@ -562,6 +649,75 @@ static DWORD WINAPI ThreadInit(
 
 }
 
+=======
+
+}
+
+// -----------------------------------------
+
+static volatile uint8_t status_net = 2ui8;
+static volatile uint8_t status_samp = 2ui8;
+
+static DWORD WINAPI NetInit(
+	LPVOID net_init
+) {
+	status_net = net::init(core::handler_packet, core::handler_rpc, core::handler_disconnect);
+	return 0;
+}
+
+static DWORD WINAPI SampInit(
+	LPVOID samp_init
+) {
+	status_samp = samp::init(core::handler_exit);
+	return 0;
+}
+
+static DWORD WINAPI ThreadInit(
+	LPVOID parameters
+) {
+
+	if (!CreateDirectory(SV_PATH_SVDIR, NULL) ||
+		!CreateDirectory(SV_PATH_STORE, NULL)
+	) {
+		FILE *output = fopen("sv_log.txt", "wt");
+		fprintf(output, "could not create directories (code:%u)\n", GetLastError());
+		fclose(output);
+	}
+
+	if (!logger::init()) return 0;
+	addresses::init();
+
+	if (!render::core::init(core::handler_render, core::handler_init, core::handler_reset)) {
+		LogError("main", "could not initialize independent modules");
+		logger::free(); return 0;
+	}
+
+	if (!CreateThread(0, 0, SampInit, 0, 0, 0) ||
+		!CreateThread(0, 0, NetInit, 0, 0, 0)
+	) {
+		LogError("main", "could not create threads dependent modules");
+		render::core::free(); logger::free(); return 0;
+	}
+
+	while (status_samp == 2 || status_net == 2) Sleep(10);
+
+	if (!status_samp) {
+		LogError("main", "could not initialize samp");
+		render::core::free(); logger::free(); return 0;
+	} if (!status_net) {
+		LogError("main", "could not initialize net");
+		render::core::free(); logger::free(); return 0;
+	}
+
+	samp::add_message_to_chat(0xFFA9C4E4, "{FFFFFF}SAMPVOICE {B9C9BF}2.0 {FFFFFF}Started");
+	samp::add_message_to_chat(0xFFA9C4E4, "{FFFFFF}/svhelp - help on commands");
+
+	core::start();
+	return 0;
+
+}
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 BOOL APIENTRY DllMain(
 	HMODULE hModule,
 	DWORD dwReasonForCall,

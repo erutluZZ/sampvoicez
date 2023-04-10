@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
     This is a SampVoice project file
     Developer: CyberMor <cyber.mor.2020@gmail.ru>
@@ -29,17 +30,36 @@ namespace core {
 #include "PlayerStore.h"
 #include "Worker.h"
 =======
+=======
+﻿#include "sv_header.h"
+
+#include "sv_net.h"
+#include "sv_pawn.h"
+#include "sv_audio.h"
+
+namespace core {
+
+	static constexpr bool debug_mode = false;
+
+	// Таблица игроков
+	static st_player_info players[MAX_PLAYERS] = { 0 };
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 	// Списки локальных потоков с автоматическим режимом привязки
 	static std::set<audio::streams::stream_dynamic_local_at_point*>							streams_at_point;
 	static std::map<uint16_t, std::set<audio::streams::stream_dynamic_local_at_vehicle*>>	streams_at_vehicle;
 	static std::map<uint16_t, std::set<audio::streams::stream_dynamic_local_at_player*>>	streams_at_player;
 	static std::map<uint16_t, std::set<audio::streams::stream_dynamic_local_at_object*>>	streams_at_object;
+<<<<<<< HEAD
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
 
 	// Сетевой обработчик
 	class net_handler : public net::handler_interface {
 	public:
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 #include <atomic>
 #include <ctime>
@@ -338,6 +358,11 @@ namespace SV
 		// Обработчик входящих пакетов
 		bool packet_handler(uint8_t packet_id, Packet *packet) {
 
+=======
+		// Обработчик входящих пакетов
+		bool packet_handler(uint8_t packet_id, Packet *packet) {
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 			bool result = true;
 
 			sv_packet::header *p_header = reinterpret_cast<sv_packet::header*>(packet->data);
@@ -1070,6 +1095,7 @@ namespace SV
 
 
 	};
+<<<<<<< HEAD
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
 
         Stream* SvCreateDLStreamAtPoint(
@@ -1553,6 +1579,8 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void** const ppData) noexcept
 		LogError("main", "could not initialize main structures");
 		return;
 	}
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 
 	CAddress::Initialize(logprintf);
 	console::init(pConsole);
@@ -1564,6 +1592,30 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void** const ppData) noexcept
 
 }
 
+<<<<<<< HEAD
+=======
+// Инициализация плагина
+static void init() {
+
+	if (!(pNetGame = reinterpret_cast<CNetGame*(*)()>(ppPluginData[PLUGIN_DATA_NETGAME])()) ||
+		!(pConsole = reinterpret_cast<void*(*)()>(ppPluginData[PLUGIN_DATA_CONSOLE])()) ||
+		!(pRakServer = reinterpret_cast<RakServerInterface*(*)()>(ppPluginData[PLUGIN_DATA_RAKSERVER])())
+	) {
+		LogError("main", "could not initialize main structures");
+		return;
+	}
+
+	CAddress::Initialize(logprintf);
+	console::init(pConsole);
+
+	if (!BASS_Init(0, SV_SETTINGS_DEFAULT_FREQUENCY, 0, nullptr, nullptr))
+		LogError("main", "could not initialize bass library (code:%d)", BASS_ErrorGetCode());
+
+	pawn::init(new core::pawn_handler);
+
+}
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 // Главный цикл обработки
 PLUGIN_EXPORT void PLUGIN_CALL ProcessTick() {
 
@@ -1621,6 +1673,7 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX* const amx) noexcept
 {
     if (pNetGame == nullptr && (pNetGame = reinterpret_cast<CNetGame*(*)()>(ppPluginData[PLUGIN_DATA_NETGAME])()) != nullptr)
@@ -1646,6 +1699,24 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *amx) {
 		init();
 	}
 
+=======
+// Выгрузка плагина
+PLUGIN_EXPORT void PLUGIN_CALL Unload() {
+	pawn::free();
+	net::free();
+	BASS_Free();
+}
+
+// Загрузка мода
+PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *amx) {
+
+	static bool plugin_init = true;
+	if (plugin_init) {
+		plugin_init = false;
+		init();
+	}
+
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 	pawn::script::reg(amx);
 	return AMX_ERR_NONE;
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
@@ -1653,6 +1724,7 @@ PLUGIN_EXPORT int PLUGIN_CALL AmxLoad(AMX *amx) {
     return AMX_ERR_NONE;
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX*) noexcept
 {
@@ -1663,10 +1735,15 @@ PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports() noexcept
 {
     return SUPPORTS_VERSION | SUPPORTS_AMX_NATIVES | SUPPORTS_PROCESS_TICK;
 =======
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 PLUGIN_EXPORT int PLUGIN_CALL AmxUnload(AMX *amx) {
 	return AMX_ERR_NONE;
 }
 PLUGIN_EXPORT unsigned int PLUGIN_CALL Supports() {
 	return SUPPORTS_VERSION | SUPPORTS_AMX_NATIVES | SUPPORTS_PROCESS_TICK;
+<<<<<<< HEAD
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
 }

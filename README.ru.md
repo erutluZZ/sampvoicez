@@ -73,6 +73,7 @@ public OnPlayerConnect(playerid) {
         SendClientMessage(playerid, -1, "У вас устаревшая версия плагина, возможна несовместимость. Обновите её.");
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Проверяем наличие микрофона
     else if (SvHasMicro(playerid) == SV_FALSE)
     {
@@ -90,6 +91,11 @@ public OnPlayerConnect(playerid) {
         // Назначаем игроку клавиши активации микрофона
         SvAddKey(playerid, 0x42);
         SvAddKey(playerid, 0x5A);
+=======
+    // Проверка наличия микрофона у игрока
+    if(!sv_has_micro(playerid)) {
+        SendClientMessage(playerid, -1, "У вас отсутствует микрофон. Вы можете слышать, но не сможете общаться.");
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 =======
     // Проверка наличия микрофона у игрока
     if(!sv_has_micro(playerid)) {

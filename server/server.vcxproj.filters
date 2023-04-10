@@ -13,6 +13,7 @@
     </Filter>
     <Filter Include="Исходные файлы\sdk\pawn">
       <UniqueIdentifier>{93acd65b-1dd4-4d1e-af2c-99497ab3bd8b}</UniqueIdentifier>
+<<<<<<< HEAD
     </Filter>
 <<<<<<< HEAD
     <Filter Include="Исходные файлы\source\pawn">
@@ -191,12 +192,39 @@
     </ClCompile>
 =======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\pawn\amx">
+      <UniqueIdentifier>{13741665-e985-4f1d-aa97-e5f9f4d2568c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\ysf">
+      <UniqueIdentifier>{b440c184-051e-42c5-bc66-83b5f423243c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\ysf\data">
+      <UniqueIdentifier>{62bce1f8-ae42-446e-b011-85b5c1a4ef6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\ysf\includes">
+      <UniqueIdentifier>{7f0cabfe-55ce-4bb3-b33a-c2e668272594}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\ysf\utils">
+      <UniqueIdentifier>{15eab89a-4752-4de7-9c46-a4b80914ff54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\aux">
+      <UniqueIdentifier>{4c4a0bc3-6323-4656-9364-0dc9b5aa77c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\sdk\audio">
+      <UniqueIdentifier>{cd13217d-a659-49fd-abd6-1494a375d0e2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="sdk\raknet\bitstream.cpp">
       <Filter>Исходные файлы\sdk\raknet</Filter>
     </ClCompile>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <ClCompile Include="include\util\logger.cpp">
       <Filter>Исходные файлы\include\util</Filter>
@@ -273,6 +301,10 @@
     </ClCompile>
     <ClCompile Include="include\util\timer.cpp">
       <Filter>Исходные файлы\include\util</Filter>
+=======
+    <ClCompile Include="sdk\pawn\amxplugin.cpp">
+      <Filter>Исходные файлы\sdk\pawn</Filter>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

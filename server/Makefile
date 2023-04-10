@@ -2,10 +2,13 @@ OUTFILE = "sampvoice.so"
 BASS_PATH = $(shell pwd)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 COMMON_FLAGS = -m32 -O3 -Ofast -w -fpermissive
 COMPILE_FLAGS = $(COMMON_FLAGS) -c -idirafter "include"
 PRELINK_FLAGS = $(COMMON_FLAGS) -shared -static-libstdc++
 =======
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 # base compile flags
 COMPILE_FLAGS=-m32 -fpack-struct=1 -fpermissive -c -O3 -w -idirafter "sdk"
 
@@ -14,6 +17,9 @@ LINK_FLAGS = -m32 -fpack-struct=1 -fpermissive -shared -O3 -static-libstdc++
 
 # bass link flags
 LINK_FLAGS += -L$(BASS_PATH) -lbass -lm -Wl,-rpath,$(BASS_PATH)
+<<<<<<< HEAD
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
 
 all:

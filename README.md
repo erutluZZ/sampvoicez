@@ -81,6 +81,7 @@ public OnPlayerConnect(playerid) {
         SendClientMessage(playerid, -1, "You're holding an old version of the plugin, possibly incompatiable. update it.");
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     // Checking for a microphone
     else if (SvHasMicro(playerid) == SV_FALSE)
     {
@@ -98,6 +99,11 @@ public OnPlayerConnect(playerid) {
         // Assign microphone activation keys to the player
         SvAddKey(playerid, 0x42);
         SvAddKey(playerid, 0x5A);
+=======
+    // Checking microphone availability
+    if(!sv_has_micro(playerid)) {
+        SendClientMessage(playerid, -1, "You don't have a microphone connected. You can head, but not talk.");
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 =======
     // Checking microphone availability
     if(!sv_has_micro(playerid)) {

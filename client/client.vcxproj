@@ -7,6 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <ItemGroup>
     <ClInclude Include="BlackList.h" />
     <ClInclude Include="Channel.h" />
@@ -901,6 +902,8 @@
   </ItemGroup>
 =======
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{A9EA3167-BD8C-4101-A146-6CF48611EEDF}</ProjectGuid>
@@ -945,6 +948,7 @@
       <PrecompiledHeaderFile />
       <PrecompiledHeaderOutputFile />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <StringPooling>true</StringPooling>
       <PreprocessorDefinitions>_WINDLL;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <LanguageStandard>stdcpp17</LanguageStandard>
@@ -956,6 +960,10 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp14</LanguageStandard>
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <LanguageStandard>stdcpp14</LanguageStandard>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -963,12 +971,17 @@
       <AdditionalLibraryDirectories>sdk</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <ProgramDatabaseFile />
       <SetChecksum>true</SetChecksum>
       <ImportLibrary />
       <ImageHasSafeExceptionHandlers>
       </ImageHasSafeExceptionHandlers>
       <Version>3.1</Version>
+=======
+      <SubSystem>Windows</SubSystem>
+      <Version>2.0</Version>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 =======
       <SubSystem>Windows</SubSystem>
       <Version>2.0</Version>

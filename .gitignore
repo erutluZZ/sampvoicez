@@ -1,6 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 .vscode/
 .vs/
+=======
+client/Release/
+server/Release/
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 =======
 client/Release/
 server/Release/
@@ -10,9 +15,12 @@ setup/files_temporary/
 effects.cpp
 *.lck
 <<<<<<< HEAD
+<<<<<<< HEAD
 *.gch
 *.so
 =======
+=======
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 *.rsuser
 *.suo
 *.user
@@ -81,5 +89,9 @@ ipch/
 !?*.[Cc]ache/
 *.GhostDoc.xml
 *.binlog
+<<<<<<< HEAD
+.localhistory/
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
 .localhistory/
 >>>>>>> parent of 40cfcff (upgrade to 3.0)

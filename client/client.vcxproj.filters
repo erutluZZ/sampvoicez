@@ -36,6 +36,7 @@
     </Filter>
     <Filter Include="Исходные файлы\modules">
       <UniqueIdentifier>{52ccd632-f29e-45f2-a298-6be34e71831c}</UniqueIdentifier>
+<<<<<<< HEAD
     </Filter>
     <Filter Include="Исходные файлы\source\audio\streams\parameters">
       <UniqueIdentifier>{40b42566-b5fd-44b8-9992-0b70d5a5c82d}</UniqueIdentifier>
@@ -1583,6 +1584,13 @@
     <ClCompile Include="sdk\raknet\BitStream.cpp">
       <Filter>Исходные файлы\sdk\raknet</Filter>
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
+=======
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="sdk\raknet\BitStream.cpp">
+      <Filter>Исходные файлы\sdk\raknet</Filter>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
     </ClCompile>
     <ClCompile Include="sdk\game\C3dMarker.cpp">
       <Filter>Исходные файлы\sdk\game</Filter>
@@ -2384,6 +2392,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <Filter>Исходные файлы\source</Filter>
     </ClCompile>
     <ClCompile Include="BlackList.cpp">
@@ -2673,6 +2682,9 @@
     </ClCompile>
     <ClCompile Include="StreamAtVehicle.cpp">
       <Filter>Исходные файлы\source\audio\streams</Filter>
+=======
+      <Filter>Исходные файлы</Filter>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
 =======
       <Filter>Исходные файлы</Filter>
 >>>>>>> parent of 40cfcff (upgrade to 3.0)
@@ -3811,6 +3823,7 @@
       <Filter>Исходные файлы\sdk\audio</Filter>
     </ClInclude>
     <ClInclude Include="resources\winres.h">
+<<<<<<< HEAD
       <Filter>Исходные файлы\resources</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -3860,6 +3873,57 @@
   <ItemGroup>
     <Image Include="resources\micro.png">
       <Filter>Исходные файлы\resources</Filter>
+=======
+      <Filter>Исходные файлы\resources</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="memory.hpp">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_addresses.h">
+      <Filter>Исходные файлы\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_net.h">
+      <Filter>Исходные файлы\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_render.h">
+      <Filter>Исходные файлы\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_samp.h">
+      <Filter>Исходные файлы\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_audio.h">
+      <Filter>Исходные файлы\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="sv_header.h">
+      <Filter>Исходные файлы</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sdk\game\rw\errcom.def">
+      <Filter>Исходные файлы\sdk\game\rw</Filter>
+    </None>
+    <None Include="sdk\game\rw\errcore.def">
+      <Filter>Исходные файлы\sdk\game\rw</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="sdk\audio\bass.lib">
+      <Filter>Исходные файлы\sdk\audio</Filter>
+    </Library>
+    <Library Include="sdk\audio\opus.lib">
+      <Filter>Исходные файлы\sdk\audio</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="resources\micro.png">
+      <Filter>Исходные файлы\resources</Filter>
+>>>>>>> parent of 40cfcff (upgrade to 3.0)
     </Image>
   </ItemGroup>
   <ItemGroup>
